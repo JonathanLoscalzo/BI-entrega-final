@@ -21,6 +21,12 @@
             "request": "launch",
             "name": "Launch GET SPEECHS",
             "program": "${workspaceFolder}/src/speech/index.2.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch GET LOCATIONS",
+            "program": "${workspaceFolder}/src/geoSpeech/index.js"
         }
     ]
 }
