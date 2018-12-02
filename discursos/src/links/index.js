@@ -14,6 +14,6 @@ require('./acumulator')().then(links => {
     //links.forEach(v => file.write(v + "\n"))
     //file.end();
 
-    let entities = links.map(l => new model({ uri: l }));
+    let entities = links.map(l => new model({ uri: l, speech: false }));
     model.create(entities).then(() => mongoose.disconnect());
 });

@@ -19,7 +19,7 @@ mongoose.connect(config.MONGO.CONNECTION_STRING, { useNewUrlParser: true });
         maxConcurrency: 10,
     });
 
-    let links = await linkModel.find({})
+    let links = await linkModel.find({ speech: false })
 
     links.forEach(async key => {
         await cluster.queue(key.uri, async ({ page, data: url }) => {
@@ -37,6 +37,9 @@ mongoose.connect(config.MONGO.CONNECTION_STRING, { useNewUrlParser: true });
         });
     })
 
+    links.forEach(e => e.speech = true)
+    linkModel.updateMany(links);
+    
     await cluster.idle();
     mongoose.disconnect();
     logger.info("TERMINÓ")
