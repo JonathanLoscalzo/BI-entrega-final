@@ -23,7 +23,7 @@ const getDiscurso = async (page, uri) => {
         return date;
     }, time_div);
 
-    const speech = { title, subtitle: note.subtitle, date: time, constent: note.content }
+    const speech = { title, subtitle: note.subtitle, date: time, content: note.content }
 
     await page.close();
 

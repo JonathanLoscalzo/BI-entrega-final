@@ -21,7 +21,6 @@ mongoose.connect(config.MONGO.CONNECTION_STRING, { useNewUrlParser: true });
 
     let links = await linkModel.find({})
 
-    let count = links.length
     links.forEach(async key => {
         await cluster.queue(key.uri, async ({ page, data: url }) => {
             try {
@@ -31,12 +30,6 @@ mongoose.connect(config.MONGO.CONNECTION_STRING, { useNewUrlParser: true });
                     .create(model)
                     .then((e) => {
                         logger.info(`OK id:`, model.id)
-                        count--;
-                        if (count == 0) {
-                            mongoose.disconnect();
-                            browser.close();
-                            logger.info("TERMINÓ")
-                        }
                     });
             } catch (error) {
                 logger.error({ error: error.message, uri: key.uri, id: key.id })
@@ -45,5 +38,7 @@ mongoose.connect(config.MONGO.CONNECTION_STRING, { useNewUrlParser: true });
     })
 
     await cluster.idle();
+    mongoose.disconnect();
+    logger.info("TERMINÓ")
     await cluster.close();
 })()
