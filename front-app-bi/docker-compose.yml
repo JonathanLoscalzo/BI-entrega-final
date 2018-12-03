@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  supermarket-web:
+    container_name: supermarket-web
+    ports:
+      - 5000:5000
+    build: ./
+    restart: always
+    

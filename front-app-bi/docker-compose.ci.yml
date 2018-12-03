@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  supermarket-web:
+    container_name: supermarket-web
+    image: $WEB_IMAGE
+    restart: always
+    environment:
+      LAST_DEPLOY_TIMESTAMP: $LAST_DEPLOY_TIMESTAMP
+      COMMIT_SHA: $COMMIT_SHA
+    labels:
+      io.rancher.container.pull_image: always
+      traefik.port: 5000
+      traefik.frontend.rule: 'Host:web.supermarket-dssd.ml'
+      traefik.frontend.headers.customResponseHeaders: 'Access-Control-Allow-Origin: *'
+      traefik.backend.healthcheck.path: /
+      traefik.backend.healthcheck.interval: 30s

@@ -1,0 +1,40 @@
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+
+stages:
+  - build
+  - deploy
+
+before_script:
+  - export WEB_IMAGE=$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+  - export COMMIT_SHA=$CI_COMMIT_SHA
+  - export COMPOSE_PROJECT_NAME=${CI_PROJECT_NAME}-${CI_ENVIRONMENT_SLUG}
+
+build:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build --pull -t $WEB_IMAGE .
+    - docker push $WEB_IMAGE
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  image: dantebarba/rancher-cli:v0.6.4
+  environment:
+    name: production
+    url: http://$PRODUCTION_DOMAIN
+  script:
+    - export RANCHER_ACCESS_KEY=$RANCHER_ACCESS_KEY
+    - export RANCHER_SECRET_KEY=$RANCHER_SECRET_KEY
+    - export RANCHER_URL=$RANCHER_URL
+    - export HOSTNAME=${CI_ENVIRONMENT_URL#https://}
+    - export LAST_DEPLOY_TIMESTAMP=$(date -I'seconds')
+    - export COMPOSE_FILE=docker-compose.ci.yml
+    - rancher up --stack supermarket-dssd --pull --force-upgrade --confirm-upgrade -d
+  only:
+    - master
