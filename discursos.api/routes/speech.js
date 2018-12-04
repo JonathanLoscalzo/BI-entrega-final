@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose')
+var moment = require('moment')
 var exchangeModel = require('../models/exchange.model')
 
 router.get('/dollar', async (req, res, next) => {
@@ -13,8 +14,7 @@ router.get('/dollar', async (req, res, next) => {
             as: "speeches"
         }
     }])
-
-    res.json(related).status(200);
+    res.json(related.map(each => ({ ...each, dateFormated: moment(each.date).format("YYYY-MM-DD") }))).status(200);
 });
 
 module.exports = router;
