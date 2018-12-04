@@ -1,1 +1,1 @@
-export const URL = 'http://gateway.supermarket-dssd.ml';
+export const URL = 'http://localhost:3000';

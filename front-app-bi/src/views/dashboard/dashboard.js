@@ -12,7 +12,9 @@ class Dashboard extends Component {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
-
+  componentWillMount() {
+    this.props.getDollarList()
+  }
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
