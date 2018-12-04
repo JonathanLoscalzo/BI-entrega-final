@@ -16,7 +16,7 @@ class Dashboard extends Component {
             <div className="App">
 
               <Header />
-              <LineChartDollar />
+              <LineChartDollar speechs={this.props.speechs} />
             </div>)}
       </div>
     );
