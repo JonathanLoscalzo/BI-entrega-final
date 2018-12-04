@@ -20,6 +20,7 @@ export default class LineChartDollar extends Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
     render() {
+        console.log(this.props.speechs);
         return (
             <LineChart style={{ 'margin-top': 25 }} width={this.state.width * 0.95} height={600} data={this.props.speechs}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>

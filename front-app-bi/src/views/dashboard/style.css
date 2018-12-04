@@ -83,3 +83,8 @@
     transform: rotate(360deg);
   }
 }
+
+.form-dates{
+  max-width: 500px;
+  margin: auto;
+}

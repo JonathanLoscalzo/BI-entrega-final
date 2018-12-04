@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Switch, Route } from 'react-router';
 import Dashboard from './views/dashboard';
-
+import MuiPickersUtilsProvider from 'material-ui-pickers/MuiPickersUtilsProvider';
+// pick utils
+import MomentUtils from '@date-io/moment';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore, { history } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -15,12 +17,14 @@ const { store, persistor } = configureStore(history);
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/" component={Dashboard} />
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+        <Router history={history}>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
 
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      </MuiPickersUtilsProvider>
       <ToastContainer />
     </PersistGate>
   </Provider>,
