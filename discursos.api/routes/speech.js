@@ -14,7 +14,7 @@ router.get('/dollar', async (req, res, next) => {
             as: "speeches"
         }
     }])
-    res.json(related.map(each => ({ ...each, dateFormated: moment(each.date).format("YYYY-MM-DD") }))).status(200);
+    res.json(related.map(each => ({ ...each, name: moment(each.date).format("YYYY-MM-DD") }))).status(200);
 });
 
 module.exports = router;
