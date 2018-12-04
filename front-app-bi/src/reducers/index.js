@@ -5,7 +5,6 @@ import { reducer as formReducer } from 'redux-form';
 const rootReducer = {
   mainReducer,
   dashboard,
-
   formReducer
 };
 

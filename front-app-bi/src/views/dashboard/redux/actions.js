@@ -1,5 +1,4 @@
 import { dashboardService } from '../services';
-import to from '../../../helpers/to'
 import { toast } from 'react-toastify';
 
 export const getDollarList = image => {
@@ -7,24 +6,21 @@ export const getDollarList = image => {
     try {
       console.log('llega');
       dispatch({
-        type: 'GET_CATALOG'
+        type: 'GET_SPEECHS'
       });
-
-      let idCatalogProcess, products, err;
-
-      console.log(await to(dashboardService.getdollar()));
+      let speechs = await dashboardService.getdollar();
 
 
 
       dispatch({
-        type: 'GET_CATALOG_SUCCESS',
-        data: products
+        type: 'GET_SPEECHS_SUCCESS',
+        data: speechs
       });
 
     } catch (error) {
       toast.error(error);
       dispatch({
-        type: 'GET_CATALOG_ERROR'
+        type: 'GET_SPEECHS_ERROR'
       });
     }
 

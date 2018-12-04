@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getDollarList } from './redux/actions';
 
 const mapStateToProps = state => ({
-
+  speechs: state.dashboard.speechs
 });
 
 const mapDispatchToProps = dispatch => {

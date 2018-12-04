@@ -1,16 +1,16 @@
 const initialState = {
-  products: null,
+  speechs: null,
   error: false
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case 'GET_CATALOG':
-      return { ...state, products: null };
-    case 'GET_CATALOG_SUCCESS':
-      return { ...state, products: action.data, error: false };
-    case 'GET_CATALOG_ERROR':
-      return { ...state, products: [], error: true };
+    case 'GET_SPEECHS':
+      return { ...state, speechs: null };
+    case 'GET_SPEECHS_SUCCESS':
+      return { ...state, speechs: action.data, error: false };
+    case 'GET_SPEECHS_ERROR':
+      return { ...state, speechs: null, error: true };
     default:
       return state;
   }

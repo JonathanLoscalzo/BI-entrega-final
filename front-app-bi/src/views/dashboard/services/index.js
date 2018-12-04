@@ -5,6 +5,6 @@ export const dashboardService = {
     axios({
       method: 'GET',
       url: `${URL}/speeches/dollar`
-    }).then(response => response).then(err => err)
+    }).then(response => response.data)
 
 };
