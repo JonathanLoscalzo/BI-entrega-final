@@ -20,6 +20,7 @@ export default class LineChartDollar extends Component {
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
+
     render() {
         console.log(this.props.speechs);
         return (
@@ -30,6 +31,7 @@ export default class LineChartDollar extends Component {
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip content={<CustomTooltip casa='casa' speechs={this.props.speechs} />} />
                 <Legend />
+
                 <Line type="monotone" dataKey="price" stroke="#82ca9d" activeDot={{
                     onClick: (a) => this.props.history.push({
                         pathname: '/details'
