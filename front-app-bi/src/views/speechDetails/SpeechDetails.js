@@ -3,11 +3,9 @@ import './style.css';
 import Header from '../../components/header';
 import LineChartDollar from './components/LineChartDollar'
 import Loading from '../../components/loading';
-
-
 import DatePicker from 'material-ui-pickers/DatePicker';
 
-class Dashboard extends Component {
+class SpeechDetails extends Component {
   state = {
     minDate: new Date(),
     maxDate: new Date(),
@@ -15,8 +13,6 @@ class Dashboard extends Component {
   componentWillMount() {
     this.props.getDollarList()
   }
-
-
   handleMinDateChange = (date) => {
     (date < this.state.maxDate) && this.setState({ minDate: date })
   }
@@ -49,10 +45,7 @@ class Dashboard extends Component {
                   onChange={this.handleMaxDateChange}
                 />
               </div>
-
               <LineChartDollar history={this.props.history} speechs={this.props.speechs} />
-
-
             </div>)}
       </div>
     );
@@ -61,4 +54,4 @@ class Dashboard extends Component {
 
 
 
-export default Dashboard
+export default SpeechDetails

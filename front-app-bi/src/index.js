@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Switch, Route } from 'react-router';
 import Dashboard from './views/dashboard';
+import SpeechDetails from './views/speechDetails'
 import MuiPickersUtilsProvider from 'material-ui-pickers/MuiPickersUtilsProvider';
 // pick utils
 import MomentUtils from '@date-io/moment';
@@ -21,7 +22,7 @@ ReactDOM.render(
         <Router history={history}>
           <Switch>
             <Route exact path="/" component={Dashboard} />
-
+            <Route exact path="/details" component={SpeechDetails} />
           </Switch>
         </Router>
       </MuiPickersUtilsProvider>
