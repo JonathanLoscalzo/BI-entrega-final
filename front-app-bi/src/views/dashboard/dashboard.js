@@ -3,10 +3,8 @@ import './style.css';
 import Header from '../../components/header';
 import LineChartDollar from './components/LineChartDollar'
 import Loading from '../../components/loading';
-
-
 import DatePicker from 'material-ui-pickers/DatePicker';
-
+import { AditionalStats } from '../../components/aditionalStats'
 class Dashboard extends Component {
   state = {
     minDate: new Date(),
@@ -25,6 +23,7 @@ class Dashboard extends Component {
 
   }
   render() {
+
     const { minDate, maxDate } = this.state;
     return (
       <div className="container">
@@ -49,10 +48,8 @@ class Dashboard extends Component {
                   onChange={this.handleMaxDateChange}
                 />
               </div>
-
               <LineChartDollar history={this.props.history} speechs={this.props.speechs} />
-
-
+              <AditionalStats />
             </div>)}
       </div>
     );

@@ -31,9 +31,12 @@ export default class LineChartDollar extends Component {
                 <Tooltip content={<CustomTooltip casa='casa' speechs={this.props.speechs} />} />
                 <Legend />
                 <Line type="monotone" dataKey="price" stroke="#82ca9d" activeDot={{
-                    onClick: (a) => this.props.history.push({
-                        pathname: '/details'
-                    })
+                    onClick: (a) => this.props.speechs[a.index].speeches.length &&
+                        this.props.history.push({
+                            pathname: '/details',
+                            data: this.props.speechs[a.index]
+                        })
+
                 }} />
             </LineChart>
         )

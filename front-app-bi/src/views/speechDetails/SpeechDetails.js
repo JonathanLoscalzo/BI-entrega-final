@@ -1,54 +1,33 @@
 import React, { Component } from 'react';
 import './style.css';
 import Header from '../../components/header';
-import LineChartDollar from './components/LineChartDollar'
-import Loading from '../../components/loading';
-import DatePicker from 'material-ui-pickers/DatePicker';
-
+import { AditionalStats } from '../../components/aditionalStats'
 class SpeechDetails extends Component {
-  state = {
-    minDate: new Date(),
-    maxDate: new Date(),
-  }
   componentWillMount() {
-    this.props.getDollarList()
-  }
-  handleMinDateChange = (date) => {
-    (date < this.state.maxDate) && this.setState({ minDate: date })
-  }
-  handleMaxDateChange = (date) => {
-    (date > this.state.minDate) && this.setState({ maxDate: date })
-
+    const { data } = this.props.history.location || null;
+    !data && this.props.history.push({
+      pathname: '/'
+    })
   }
   render() {
-    const { minDate, maxDate } = this.state;
+    const { data } = this.props.history.location
     return (
       <div className="container">
-        {!this.props.speechs ? (
-          <Loading />
-        ) : (
-            <div className="App">
-              <Header />
-              <div className='form-dates'>
-                <DatePicker style={{ margin: 15 }}
-                  value={minDate}
-                  minDate={new Date('2015-12-17')}
-                  maxDate={this.state.maxDate}
-                  name='minDate'
-                  onChange={this.handleMinDateChange}
-                />
-                <DatePicker style={{ margin: 15 }}
-                  value={maxDate}
-                  name='maxDate'
-                  minDate={this.state.minDate}
-                  maxDate={new Date()}
-                  onChange={this.handleMaxDateChange}
-                />
+        <div className="App">
+          <Header />
+          {data && data.speeches.map(speech =>
+            <div style={{ margin: 15 }} >
+              <div style={{ margin: 20, fontSize: 'x-large' }}>
+                {speech.title}
               </div>
-              <LineChartDollar history={this.props.history} speechs={this.props.speechs} />
+              <div style={{ margin: 20 }}>
+                {speech.content}
+              </div>
+              <AditionalStats />
             </div>)}
+        </div>
       </div>
-    );
+    )
   }
 }
 
