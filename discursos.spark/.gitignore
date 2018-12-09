@@ -1,5 +1,4 @@
 *.tsv
 *.csv
-*.py
 spark-warehouse
 .env
