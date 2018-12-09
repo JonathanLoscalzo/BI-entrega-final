@@ -70,11 +70,20 @@ tokenized_by_word = ngram.setParams(n=5).transform(
     tokenized_by_word, {ngram.outputCol: "ngrams_5"}
 )
 
+tokenized_by_word = ngram.setParams(n=7).transform(
+    tokenized_by_word, {ngram.outputCol: "ngrams_7"}
+)
+
 tokenized_by_word = remover.transform(tokenized_by_word)
 
 # udf mappers
 countTokens = udf(lambda words: len(set(words)), IntegerType())
-item_map = udf(lambda word, count: {word: count}, MapType(StringType(), IntegerType()))
+
+item_map = udf(
+    lambda word, count: {"word": str(word), "count": str(count)},
+    MapType(StringType(), StringType()),
+)
+
 filter_specials = udf(
     lambda ngram: str(ngram).find("palabras del presidente") < 0
     and str(ngram).find("mauricio macri en") < 0
@@ -144,4 +153,18 @@ ngrams_5_count = (
 ngrams_5_count.write.format("com.mongodb.spark.sql.DefaultSource").option(
     "collection", "ngrams_5_counts"
 ).mode("append").save()
+
+ngrams_7_count = (
+    tokenized_by_word.select(explode(col("ngrams_7")).alias("ngram"))
+    .groupBy("ngram")
+    .agg(count("ngram").alias("counter"))
+    .select("ngram", "counter")
+    .filter(filter_specials(col("ngram")))
+    .sort("counter", ascending=False)
+)
+
+ngrams_7_count.write.format("com.mongodb.spark.sql.DefaultSource").option(
+    "collection", "ngrams_7_counts"
+).mode("append").save()
+
 
