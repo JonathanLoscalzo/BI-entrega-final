@@ -1,16 +1,14 @@
 const initialState = {
-  speechs: null,
+  wordcounts: [],
   error: false
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case 'GET_SPEECHS':
-      return { ...state, speechs: null };
-    case 'GET_SPEECHS_SUCCESS':
-      return { ...state, speechs: action.data, error: false };
-    case 'GET_SPEECHS_ERROR':
-      return { ...state, speechs: null, error: true };
+    case 'RESET_WORD_COUNT':
+      return initialState;
+    case 'GET_SPEECHS_BY_ID_SUCCESS':
+      return { ...state, wordcounts: [...state.wordcounts, action.data], error: false };
     default:
       return state;
   }

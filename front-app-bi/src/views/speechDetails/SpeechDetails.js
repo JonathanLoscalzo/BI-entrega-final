@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './style.css';
 import Header from '../../components/header';
-import { AditionalStats } from '../../components/aditionalStats'
+import WordCountStat from './components/wordCountStat'
 class SpeechDetails extends Component {
   componentWillMount() {
+    this.props.resetWordCount()
     const { data } = this.props.history.location || null;
-    !data && this.props.history.push({
+    (!data) && this.props.history.push({
       pathname: '/'
     })
   }
@@ -23,7 +24,7 @@ class SpeechDetails extends Component {
               <div style={{ margin: 20 }}>
                 {speech.content}
               </div>
-              <AditionalStats />
+              <WordCountStat {...speech} />
             </div>)}
         </div>
       </div>
