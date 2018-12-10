@@ -11,12 +11,12 @@ import moment from 'moment'
 class Dashboard extends Component {
 
   state = {
-    minDate: moment(new Date()),
+    minDate: moment(new Date()).add(-4, "months"),
     maxDate: moment(new Date()),
   }
 
   componentWillMount() {
-    this.props.getDollarList(null, null)
+    this.props.getDollarList(this.state.minDate, this.state.maxDate)
     this.props.getNgrams();
     this.props.getWordcounts()
   }
