@@ -5,6 +5,8 @@ import { getDollarList, getNgrams, getWordcounts } from './redux/actions';
 
 const mapStateToProps = state => ({
   speechs: state.dashboard.speechs,
+  wordcounts: state.dashboard.wordcounts,
+  ngrams: state.dashboard.ngrams
 });
 
 const mapDispatchToProps = dispatch => {

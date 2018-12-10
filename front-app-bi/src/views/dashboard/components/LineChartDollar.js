@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-
+import moment from 'moment'
 import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line } from 'recharts';
 import './style.css';
 import CustomTooltip from './CustomTooltip'
+import { CustomizedDot } from './CustomizedDot';
+
+moment.locale("es")
+const tickFormatter = (tick) => moment(tick).format('MMM-YYYY')
+
 export default class LineChartDollar extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +25,7 @@ export default class LineChartDollar extends Component {
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
+
     render() {
         return (
             <LineChart
@@ -28,7 +34,7 @@ export default class LineChartDollar extends Component {
                 data={this.props.speechs}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
 
-                <XAxis dataKey="name" />
+                <XAxis tickFormatter={tickFormatter} dataKey="name" />
                 <YAxis />
 
                 <CartesianGrid strokeDasharray="3 3" />
@@ -41,6 +47,7 @@ export default class LineChartDollar extends Component {
                     type="monotone"
                     dataKey="price"
                     stroke="#82ca9d"
+                    dot={<CustomizedDot />}
                     activeDot={{
                         onClick: (a) => this.props.speechs[a.index].speeches.length &&
                             this.props.history.push({

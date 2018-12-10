@@ -50,7 +50,7 @@ export const getNgrams = () => {
 
       dispatch({
         type: GET_NGRAMS_RESPONSE,
-        ngrams: ngrams.ngrams.slice(0, 20)
+        data: ngrams.ngrams.slice(0, 20)
       });
 
     } catch (error) {
@@ -73,10 +73,9 @@ export const getWordcounts = () => {
       });
 
       let wordcounts = await mainService.getWordcounts()
-
       dispatch({
         type: GET_WORDCOUNTS_RESPONSE,
-        wordcounts: wordcounts.slice(0, 20)
+        data: wordcounts.slice(0, 20)
       });
 
     } catch (error) {

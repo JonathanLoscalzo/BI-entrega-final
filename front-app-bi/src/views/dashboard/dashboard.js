@@ -4,7 +4,7 @@ import Header from '../../components/header';
 import LineChartDollar from './components/LineChartDollar'
 import Loading from '../../components/loading';
 import DatePicker from 'material-ui-pickers/DatePicker';
-import { AditionalStats } from '../../components/aditionalStats'
+import { AditionalStats } from './components/AditionalsStats/AditionalsStats'
 import { Divider } from '@material-ui/core'
 import moment from 'moment'
 
@@ -69,7 +69,7 @@ class Dashboard extends Component {
               <br />
               <br />
 
-              <AditionalStats />
+              <AditionalStats ngrams={this.props.ngrams} wordcounts={this.props.wordcounts} />
             </div>)}
       </div>
     );

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { URL } from '../constants';
 
 const mainService = {
     getWordcounts: () =>
