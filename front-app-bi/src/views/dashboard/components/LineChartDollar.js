@@ -21,23 +21,35 @@ export default class LineChartDollar extends Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
     render() {
-        console.log(this.props.speechs);
         return (
-            <LineChart style={{ 'margin-top': 25 }} width={this.state.width * 0.95} height={600} data={this.props.speechs}
+            <LineChart
+                style={{ marginTop: 25 }} width={this.state.width * 0.95}
+                height={600}
+                data={this.props.speechs}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+
                 <XAxis dataKey="name" />
                 <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip content={<CustomTooltip casa='casa' speechs={this.props.speechs} />} />
-                <Legend />
-                <Line type="monotone" dataKey="price" stroke="#82ca9d" activeDot={{
-                    onClick: (a) => this.props.speechs[a.index].speeches.length &&
-                        this.props.history.push({
-                            pathname: '/details',
-                            data: this.props.speechs[a.index]
-                        })
 
-                }} />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip content={
+                    <CustomTooltip casa='casa' speechs={this.props.speechs} />
+                } />
+                <Legend />
+
+                <Line
+                    type="monotone"
+                    dataKey="price"
+                    stroke="#82ca9d"
+                    activeDot={{
+                        onClick: (a) => this.props.speechs[a.index].speeches.length &&
+                            this.props.history.push({
+                                pathname: '/details',
+                                data: this.props.speechs[a.index]
+                            })
+
+                    }} />
+
             </LineChart>
         )
     }

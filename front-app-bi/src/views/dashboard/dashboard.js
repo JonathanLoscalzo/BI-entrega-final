@@ -5,23 +5,32 @@ import LineChartDollar from './components/LineChartDollar'
 import Loading from '../../components/loading';
 import DatePicker from 'material-ui-pickers/DatePicker';
 import { AditionalStats } from '../../components/aditionalStats'
+import { Divider } from '@material-ui/core'
+import moment from 'moment'
+
 class Dashboard extends Component {
+
   state = {
-    minDate: new Date(),
-    maxDate: new Date(),
+    minDate: moment(new Date()),
+    maxDate: moment(new Date()),
   }
+
   componentWillMount() {
-    this.props.getDollarList()
+    this.props.getDollarList(null, null)
+    this.props.getNgrams();
+    this.props.getWordcounts()
   }
 
-
-  handleMinDateChange = (date) => {
+  handleMinDateChange(date) {
     (date < this.state.maxDate) && this.setState({ minDate: date })
+    this.props.getDollarList(date, this.state.maxDate)
   }
-  handleMaxDateChange = (date) => {
-    (date > this.state.minDate) && this.setState({ maxDate: date })
 
+  handleMaxDateChange(date) {
+    (date > this.state.minDate) && this.setState({ maxDate: date })
+    this.props.getDollarList(this.state.minDate, date)
   }
+
   render() {
 
     const { minDate, maxDate } = this.state;
@@ -33,22 +42,33 @@ class Dashboard extends Component {
             <div className="App">
               <Header />
               <div className='form-dates'>
+
                 <DatePicker style={{ margin: 15 }}
                   value={minDate}
                   minDate={new Date('2015-12-17')}
                   maxDate={this.state.maxDate}
                   name='minDate'
-                  onChange={this.handleMinDateChange}
+                  onChange={(e) => this.handleMinDateChange(e)}
                 />
+
                 <DatePicker style={{ margin: 15 }}
                   value={maxDate}
                   name='maxDate'
                   minDate={this.state.minDate}
                   maxDate={new Date()}
-                  onChange={this.handleMaxDateChange}
+                  onChange={(e) => this.handleMaxDateChange(e)}
                 />
               </div>
-              <LineChartDollar history={this.props.history} speechs={this.props.speechs} />
+
+              <LineChartDollar
+                history={this.props.history}
+                speechs={this.props.speechs}
+              />
+
+              <Divider />
+              <br />
+              <br />
+
               <AditionalStats />
             </div>)}
       </div>
