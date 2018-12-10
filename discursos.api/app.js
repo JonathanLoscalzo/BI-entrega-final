@@ -11,6 +11,7 @@ var cors = require('cors');
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 var speechesRouter = require('./routes/speech')
+var statsRouter = require('./routes/stats')
 
 var app = express();
 const corsOption = {
@@ -25,8 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter);
-//app.use('/users', usersRouter);
 app.use('/speeches', speechesRouter);
+app.use('/stats', statsRouter);
 
 module.exports = app;
