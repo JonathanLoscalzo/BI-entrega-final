@@ -22,35 +22,7 @@ router.get("/wordcounts", async (req, res, nxt) => {
 })
 
 router.get("/ngrams", async (req, res, nxt) => {
-    let agg = [
-        { $sort: { counter: -1 } },
-        { $match: { counter: { $gt: 10 } } },
-        { $project: { _id: 0, ngram: 1, counter: 1 } }
-    ]
-
-    let ngrams5 = await Ngrams5.aggregate(agg)
-
-    agg = [
-        { $sort: { counter: -1 } },
-        { $match: { counter: { $gt: 10 } } },
-        { $project: { _id: 0, ngram: 1, counter: 1 } }
-    ]
-
-    let ngrams6 = await Ngrams6.aggregate(agg)
-
-    agg = [
-        { $sort: { counter: -1 } },
-        { $match: { counter: { $gt: 5 } } },
-        { $project: { _id: 0, ngram: 1, counter: 1 } }
-    ]
-
-    let ngrams7 = await Ngrams7.aggregate(agg)
-
-    let ngrams = _.sortBy(
-        ngrams6.slice(0, 10)
-            .concat(ngrams5.slice(0, 12))
-            .concat(ngrams7.slice(0, 15)),
-        (a) => -a.counter)
+    let { ngrams7, ngrams6, ngrams5, ngrams } = await getNgrams();
 
     res.json({ ngrams7, ngrams6, ngrams5, ngrams }).status(200)
 })
@@ -65,9 +37,16 @@ router.get("/", async (req, res, nxt) => {
             { $project: { _id: 0, word: 1, word_count: 1 } }
         ])
 
+    let { ngrams7, ngrams6, ngrams5, ngrams } = await getNgrams();
+
     var speeches = await GetSpeechesWithStats();
 
     res.json({
+        ngrams: {
+            most_use_5: ngrams5[0],
+            most_used_6: ngrams6[0],
+            most_use_7: ngrams7[0],
+        },
         word: {
             most_used: wordcounts[0],
         },
@@ -84,3 +63,32 @@ router.get("/", async (req, res, nxt) => {
 })
 
 module.exports = router;
+
+async function getNgrams() {
+    let agg = [
+        { $sort: { counter: -1 } },
+        { $match: { counter: { $gt: 10 } } },
+        { $project: { _id: 0, ngram: 1, counter: 1 } }
+    ];
+
+    let ngrams5 = await Ngrams5.aggregate(agg);
+    agg = [
+        { $sort: { counter: -1 } },
+        { $match: { counter: { $gt: 10 } } },
+        { $project: { _id: 0, ngram: 1, counter: 1 } }
+    ];
+
+    let ngrams6 = await Ngrams6.aggregate(agg);
+    agg = [
+        { $sort: { counter: -1 } },
+        { $match: { counter: { $gt: 5 } } },
+        { $project: { _id: 0, ngram: 1, counter: 1 } }
+    ];
+
+    let ngrams7 = await Ngrams7.aggregate(agg);
+    let ngrams = _.sortBy(ngrams6.slice(0, 10)
+        .concat(ngrams5.slice(0, 12))
+        .concat(ngrams7.slice(0, 15)), (a) => -a.counter);
+
+    return { ngrams7, ngrams6, ngrams5, ngrams };
+}
