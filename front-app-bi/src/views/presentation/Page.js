@@ -7,6 +7,8 @@ import Divider from '@material-ui/core/Divider';
 import Header from '../../components/header';
 import Loading from '../../components/loading2/index'
 import { MdMessage, MdMonetizationOn, MdSentimentNeutral, MdSentimentSatisfied } from 'react-icons/md'
+import { GoMarkGithub } from 'react-icons/go'
+import IconButton from '@material-ui/core/IconButton';
 
 
 class Page extends Component {
@@ -15,12 +17,15 @@ class Page extends Component {
     this.props.load()
   }
 
+  handleClick() {
+    window.open("https://github.com/JonathanLoscalzo/BI-entrega-final", "_blank")
+  }
+
   handleGoBack() {
     this.props.history.goBack()
   }
 
   render() {
-    console.log(this.props.common)
     return (
       <div className="container">
         <div className="App">
@@ -40,6 +45,12 @@ class Page extends Component {
             <Typography variant="title" gutterBottom>
               De Luca Agustín
             </Typography>
+            <IconButton
+              onClick={this.handleClick}
+              color="inherit"
+              aria-label="Menu">
+              <GoMarkGithub />
+            </IconButton>
             <Divider />
             <Grid container spacing={16}>
               <Grid item xs={12} >
@@ -55,7 +66,7 @@ class Page extends Component {
                   Por medio de la librería Puppeteer, realizamos webscraping para obtener los discursos y almacenarlos en una BD de MongoDB
                 </Typography>
                 <Typography variant="button" gutterBottom>
-                  
+
                 </Typography>
               </Grid>
 
@@ -67,7 +78,7 @@ class Page extends Component {
                   Por medio del sitio <a href="bankersalgo.com">bankersalgo.com</a>, obtuvimos los precios del dólar y los almacenamos en una BD de MongoDB
                 </Typography>
                 <Typography variant="button" gutterBottom>
-                  
+
                 </Typography>
               </Grid>
 
@@ -80,7 +91,7 @@ class Page extends Component {
                   Todos estos cálculos, los realizamos con Pyspark, y todo fue almacenado en la BD de MongoDB.
                 </Typography>
                 <Typography variant="button" gutterBottom>
-                  
+
                 </Typography>
               </Grid>
 
@@ -92,7 +103,7 @@ class Page extends Component {
                   Realizamos una API con Nodejs para servir los datos y realizar algunas agregaciones con el motor de MongoDB.
                 </Typography>
                 <Typography variant="button" gutterBottom>
-                  
+
                 </Typography>
               </Grid>
 
@@ -105,7 +116,7 @@ class Page extends Component {
                   Incluso podemos ver los discursos.
                 </Typography>
                 <Typography variant="button" gutterBottom>
-                  
+
                 </Typography>
               </Grid>
 
@@ -118,7 +129,7 @@ class Page extends Component {
                   Tuvimos problemas para repetir las búsquedas y que nos dieran resultados coherentes.
                 </Typography>
                 <Typography variant="button" gutterBottom>
-                  
+
                 </Typography>
               </Grid>
 
@@ -130,7 +141,7 @@ class Page extends Component {
                   Buscar los n-grams en twitter. Faltante
                 </Typography>
                 <Typography variant="button" gutterBottom>
-                  
+
                 </Typography>
               </Grid>
 
@@ -143,7 +154,7 @@ class Page extends Component {
                   Observamos, que los entrenamientos eran con tweets, y por ende solo se podían analizar datos semejantes.
                 </Typography>
                 <Typography variant="button" gutterBottom>
-                  
+
                 </Typography>
               </Grid>
             </Grid>

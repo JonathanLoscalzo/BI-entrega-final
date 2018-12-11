@@ -7,8 +7,8 @@ import Divider from '@material-ui/core/Divider';
 import Header from '../../components/header';
 import Loading from '../../components/loading2/index'
 import Card from './components/Card/index'
-import { MdMessage, MdMonetizationOn, MdSentimentNeutral, MdSentimentSatisfied, MdAssessment} from 'react-icons/md'
-
+import { MdMessage, MdMonetizationOn, MdSentimentNeutral, MdSentimentSatisfied, MdAssessment } from 'react-icons/md'
+import { FaBatteryQuarter, FaBatteryThreeQuarters, FaBatteryHalf } from 'react-icons/fa'
 
 class Page extends Component {
 
@@ -64,22 +64,59 @@ class Page extends Component {
                       name="Discurso más largo"
                       value={`${this.props.common.speeches.largest.total_distict_words} palabras`}
                       type="primary"
-                      action={() => this.props.history.push({
-                        pathname: '/details',
-                        data: { speeches: [this.props.common.speeches.largest] }
-                      })} />
+                      action={() => {
+                        this.props.history.push({
+                          pathname: '/details',
+                          data: { speeches: [this.props.common.speeches.largest] }
+                        })
+                      }}
+                    />
                   </Grid>
+
                   <Grid item xs={6}>
                     <Card
                       icon={<MdSentimentNeutral />}
                       name="Discurso más corto"
                       value={`${this.props.common.speeches.smallest.total_distict_words} palabras`}
                       type="primary"
-                      action={() => this.props.history.push({
-                        pathname: '/details',
-                        data: { speeches: [this.props.common.speeches.smallest] }
-                      })} />
+                      action={() => {
+                        this.props.history.push({
+                          pathname: '/details',
+                          data: { speeches: [this.props.common.smallest.largest] }
+                        })
+                      }}
+                    />
                   </Grid>
+                  {
+                    this.props.common.ngrams &&
+                    (<React.Fragment>
+                      <Grid item xs={6}>
+                        <Card
+                          icon={<FaBatteryQuarter />}
+                          name={this.props.common.ngrams.most_use_5.ngram}
+                          value={`${this.props.common.ngrams.most_use_5.counter} apariciones`}
+                          type="primary"
+                        />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Card
+                          icon={<FaBatteryHalf />}
+                          name={this.props.common.ngrams.most_used_6.ngram}
+                          value={`${this.props.common.ngrams.most_used_6.counter} apariciones`}
+                          type="primary"
+                        />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Card
+                          icon={<FaBatteryThreeQuarters />}
+                          name={this.props.common.ngrams.most_use_7.ngram}
+                          value={`${this.props.common.ngrams.most_use_7.counter} apariciones`}
+                          type="primary"
+                        />
+                      </Grid>
+                    </React.Fragment>
+                    )
+                  }
                 </Grid>
               </div>)
             }

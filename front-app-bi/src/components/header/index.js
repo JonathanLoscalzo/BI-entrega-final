@@ -14,7 +14,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import { FaHome, FaDashcube, FaFileWord, FaFileContract } from 'react-icons/fa'
-
+import { GoMarkGithub } from 'react-icons/go'
 import './style.css';
 
 export default class extends React.Component {
@@ -27,6 +27,10 @@ export default class extends React.Component {
       [side]: open,
     });
   };
+
+  handleClick() {
+    window.open("https://github.com/JonathanLoscalzo/BI-entrega-final", "_blank")
+  }
 
   render() {
     return (
@@ -55,12 +59,16 @@ export default class extends React.Component {
                   <ListItemIcon><FaFileContract /></ListItemIcon>
                   <ListItemText primary="Ngrams"></ListItemText>
                 </ListItem>
-                <ListItem button key="Wordcounts" onClick={() => this.props.history.push({ pathname: '/Wordcounts' })}>
+                {/* <ListItem button key="Wordcounts" onClick={() => this.props.history.push({ pathname: '/Wordcounts' })}>
                   <ListItemIcon><FaFileWord /></ListItemIcon>
                   <ListItemText primary="Wordcounts"></ListItemText>
-                </ListItem>
+                </ListItem> */}
               </List>
               <Divider />
+              <ListItem button key="GitHub" onClick={this.handleClick}>
+                <ListItemIcon><GoMarkGithub /></ListItemIcon>
+                <ListItemText primary="Github Entrega"></ListItemText>
+              </ListItem>
             </div>
           </div>
         </Drawer>
