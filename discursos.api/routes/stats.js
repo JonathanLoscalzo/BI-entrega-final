@@ -58,10 +58,19 @@ router.get("/ngrams", async (req, res, nxt) => {
 router.get("/", async (req, res, nxt) => {
     var speeches_count = await speechModel.find().countDocuments()
     var dollars_count = await exchangeModel.find().countDocuments()
+    var wordcounts = await wordcountModel.aggregate(
+        [
+            { $sort: { word_count: -1 } },
+            { $match: { word_count: { $gt: 100 } } },
+            { $project: { _id: 0, word: 1, word_count: 1 } }
+        ])
 
     var speeches = await GetSpeechesWithStats();
 
     res.json({
+        word: {
+            most_used: wordcounts[0],
+        },
         speeches: {
             count: speeches_count,
             largest: _.maxBy(speeches, (a) => a.total_distict_words),
