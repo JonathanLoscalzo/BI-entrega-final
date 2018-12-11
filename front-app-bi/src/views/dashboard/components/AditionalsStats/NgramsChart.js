@@ -12,7 +12,6 @@ export const NgramsChart = ({ data }) => {
                 <p>Un n-grama es una subsecuencia de n elementos de una secuencia dada. En nuestro caso, los discursos.</p>
                 <p>Contabilizamos n-ramas con N = [5,6,7]</p>
                 <p>Hay frases que suelen repetirse</p>
-                <p>En el siguiente link, se puede ver un listado más completo "aquí"</p>
                 <p>El siguiente gráfico, tiene el conjunto de los ngramas que más se mencionan</p>
             </div>
             <BarChart

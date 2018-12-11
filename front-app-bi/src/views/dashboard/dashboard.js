@@ -40,7 +40,7 @@ class Dashboard extends Component {
           <Loading />
         ) : (
             <div className="App">
-              <Header />
+              <Header history={this.props.history} />
               <div className='form-dates'>
 
                 <DatePicker style={{ margin: 15 }}
