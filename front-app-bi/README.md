@@ -12,3 +12,9 @@ prod:
 npm run build
 npm install serve
 npm serve -s build
+
+### SITIO
+bi-tp-final.surge.sh
+
+### BACKEND
+bi-tp-final.herokuapp.com
