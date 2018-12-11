@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { load } from './redux/actions'
 
 const mapStateToProps = state => ({
-  common: state.common.data,
-  loading: state.common.loading,
-  error: state.common.error
+  common: state.home.data,
+  loading: state.home.loading,
+  error: state.home.error
 });
 
 const mapDispatchToProps = dispatch => {
