@@ -31,7 +31,7 @@ class SpeechDetails extends Component {
               <div style={{ margin: 20, textAlign: "justify" }}>
                 {speech.content}
               </div>
-              <WordCountStat {...speech} />
+              <WordCountStat speech={speech} wordcounts={this.props.wordcounts} {...speech} />
             </div>)}
         </div>
         {/* <GoBackButton handleGoBack={this.handleGoBack} /> */}

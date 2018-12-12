@@ -5,6 +5,6 @@ export const detailsService = {
     axios({
       method: 'GET',
       url: `${URL}/speeches/${id}`
-    }).then(response => response.data[0].items)
+    }).then(response => response.data[0])
 
 };

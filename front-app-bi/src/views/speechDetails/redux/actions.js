@@ -3,10 +3,10 @@ import { detailsService } from '../services';
 export const getWordCounts = id => {
   return async (dispatch, getState) => {
     try {
-      let wordcounts = await detailsService.getSpeechById(id);
+      let speech = await detailsService.getSpeechById(id);
       dispatch({
         type: 'GET_SPEECHS_BY_ID_SUCCESS',
-        data: { id, wordcounts }
+        data: speech
       });
     } catch (error) {
       dispatch({

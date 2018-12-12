@@ -3,7 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { resetWordCount } from './redux/actions'
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => {
+  return {
+    speech: state.speechDetail.speech,
+    wordcounts: state.speechDetail.wordcounts,
+  }
+};
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ resetWordCount }, dispatch);
