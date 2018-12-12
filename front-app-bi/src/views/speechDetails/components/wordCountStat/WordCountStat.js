@@ -41,7 +41,7 @@ export default class WordCountStat extends Component {
                 name: 'WordCounts'
             }],
             title: {
-                text: 'Palabras más mencionadas'
+                text: ''
             }
         }
 
