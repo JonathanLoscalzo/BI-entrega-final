@@ -35,7 +35,7 @@ class Page extends Component {
                   ¿Qué son los N-GRAMS?
               </Typography>
 
-                <Typography variant="BODY" gutterBottom>
+                <Typography variant="body2" gutterBottom>
                   <p>Un n-grama es una subsecuencia de n elementos de una secuencia dada. En nuestro caso, los discursos.</p>
                   <p>Contabilizamos n-gramas con N = [5,6,7]</p>
                   <p>Hay frases que suelen repetirse, más a menudo de lo que pensamos...</p>

@@ -49,15 +49,15 @@ export default class extends React.Component {
                 </ListItem>
                 <ListItem button key="Stats" onClick={() => this.props.history.push({ pathname: '/Stats' })}>
                   <ListItemIcon><FaChartBar /></ListItemIcon>
-                  <ListItemText primary="Stats"></ListItemText>
+                  <ListItemText primary="Estadísticas"></ListItemText>
                 </ListItem>
                 <ListItem button key="Dashboard" onClick={() => this.props.history.push({ pathname: '/Dashboard' })}>
                   <ListItemIcon><FaDashcube /></ListItemIcon>
-                  <ListItemText primary="Dashboard"></ListItemText>
+                  <ListItemText primary="Discursos"></ListItemText>
                 </ListItem>
                 <ListItem button key="Ngrams" onClick={() => this.props.history.push({ pathname: '/Ngrams' })}>
                   <ListItemIcon><FaFileContract /></ListItemIcon>
-                  <ListItemText primary="Ngrams"></ListItemText>
+                  <ListItemText primary="N-grams"></ListItemText>
                 </ListItem>
                 {/* <ListItem button key="Wordcounts" onClick={() => this.props.history.push({ pathname: '/Wordcounts' })}>
                   <ListItemIcon><FaFileWord /></ListItemIcon>

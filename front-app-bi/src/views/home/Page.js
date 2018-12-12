@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -9,11 +10,14 @@ import Loading from '../../components/loading2/index'
 import Card from './components/Card/index'
 import { MdMessage, MdMonetizationOn, MdSentimentNeutral, MdSentimentSatisfied, MdAssessment } from 'react-icons/md'
 import { FaBatteryQuarter, FaBatteryThreeQuarters, FaBatteryHalf } from 'react-icons/fa'
+import { AditionalStats } from './components/AditionalsStats/AditionalsStats'
 
 class Page extends Component {
 
   componentWillMount() {
     this.props.load()
+    this.props.getNgrams()
+    this.props.getWordcounts()
   }
 
   handleGoBack() {
@@ -21,7 +25,9 @@ class Page extends Component {
   }
 
   render() {
-    console.log(this.props.common)
+    
+    const { ngrams, wordcounts } = this.props;
+
     return (
       <div className="container">
         <div className="App">
@@ -117,6 +123,15 @@ class Page extends Component {
                     </React.Fragment>
                     )
                   }
+
+                  <Grid item xs={12}>
+                  
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <AditionalStats ngrams={ngrams} wordcounts={wordcounts} />
+                  </Grid>
+                  
                 </Grid>
               </div>)
             }

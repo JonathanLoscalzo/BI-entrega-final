@@ -13,7 +13,6 @@ export default class extends React.Component {
 
     render() {
         const { data, title } = this.props;
-        console.log(data)
         const options = {
             series: [{
                 type: 'wordcloud',

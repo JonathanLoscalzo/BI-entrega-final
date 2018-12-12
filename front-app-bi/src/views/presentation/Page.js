@@ -6,7 +6,6 @@ import Divider from '@material-ui/core/Divider';
 
 import Header from '../../components/header';
 import Loading from '../../components/loading2/index'
-import { MdMessage, MdMonetizationOn, MdSentimentNeutral, MdSentimentSatisfied } from 'react-icons/md'
 import { GoMarkGithub } from 'react-icons/go'
 import IconButton from '@material-ui/core/IconButton';
 
