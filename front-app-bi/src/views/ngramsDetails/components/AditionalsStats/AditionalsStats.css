@@ -88,3 +88,9 @@
   max-width: 500px;
   margin: auto;
 }
+
+#graph {
+  min-width: "310px";
+  max-width: "800px";
+  margin: "0 auto"
+}

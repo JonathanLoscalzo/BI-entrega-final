@@ -5,7 +5,7 @@ import Loading from '../../components/loading2/index'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import BarChart from './components/AditionalsStats/NgramsChart'
+import BarChart from './components/AditionalsStats/NgramsChart.1'
 
 class Page extends Component {
 
@@ -45,35 +45,35 @@ class Page extends Component {
               </Grid>
               {
                 this.props.ngrams && (
-                  <Grid item xs={6} >
+                  <Grid item xs={12} >
                     <BarChart data={this.props.ngrams.ngrams5.slice(0, 40)} title="N-GRAMAS DE 5" />
                   </Grid>
                 )
               }
-              <Grid item xs={6} >
+              <Grid item xs={12} >
                 {
                   this.props.ngrams && (
-                    <Grid item xs={6} >
+                    // <Grid item xs={6} >
                       <BarChart data={this.props.ngrams.ngrams6.slice(0, 40)} title="N-GRAMAS DE 6" />
-                    </Grid>
+                    // </Grid>
                   )
                 }
               </Grid>
-              <Grid item xs={6} >
+              <Grid item xs={12} >
                 {
                   this.props.ngrams && (
-                    <Grid item xs={6} >
+                    // <Grid item xs={6} >
                       <BarChart data={this.props.ngrams.ngrams7.slice(0, 40)} title="N-GRAMAS DE 7" />
-                    </Grid>
+                    // </Grid>
                   )
                 }
               </Grid>
-              <Grid item xs={6} >
+              <Grid item xs={12} >
                 {
                   this.props.ngrams && (
-                    <Grid item xs={6} >
+                    // <Grid item xs={6} >
                       <BarChart data={this.props.ngrams.ngrams.slice(0, 40)} title="General" />
-                    </Grid>
+                    // </Grid>
                   )
                 }
               </Grid>
