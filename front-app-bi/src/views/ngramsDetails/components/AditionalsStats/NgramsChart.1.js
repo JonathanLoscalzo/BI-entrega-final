@@ -20,18 +20,19 @@ export default class extends React.Component {
                 name: 'WordCounts'
             }],
             title: {
-                text: 'Wordcloud'
+                text: title
             }
         }
 
         return (
             <div style={{ display: 'inline-block' }}>
-                <div style={{ fontWeight: 600, minWidth: "1000px", maxWidth: "1000px", margin: "0 auto" }}>{title}</div>
-                <HighchartsReact
-                    highcharts={Highcharts}
-                    constructorType={'chart'}
-                    options={options}
-                />
+                <div style={{ fontWeight: 600, minWidth: "1000px", maxWidth: "1000px", margin: "0 auto" }}>
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        constructorType={'chart'}
+                        options={options}
+                    />
+                </div>
             </div>
         )
     }

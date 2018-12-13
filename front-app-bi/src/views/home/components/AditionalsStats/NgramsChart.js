@@ -20,10 +20,10 @@ export const NgramsChart = ({ data }) => {
         <div style={{ display: 'inline-block' }}>
             <div style={{ fontWeight: 600 }}>N-grams más mencionados</div>
             <div>
-                <p>Un n-grama es una subsecuencia de n elementos de una secuencia dada. En nuestro caso, los discursos.</p>
-                <p>Contabilizamos n-ramas con N = [5,6,7]</p>
-                <p>Hay frases que suelen repetirse</p>
-                <p>El siguiente gráfico, tiene el conjunto de los ngramas que más se mencionan</p>
+                <p>Un n-grama es una subsecuencia de n elementos de una secuencia dada. En nuestro caso, los discursos son la secuencia.</p>
+                <p>Contabilizamos n-gramas con N = [5,6,7]</p>
+                <p>Hay frases que suelen repetirse, más de lo que pensamos...</p>
+                <p>Los siguientes gráficos contienen el conjunto de los ngramas más mencionados para los casos 5, 6 y 7.</p>
             </div>
             <div style={{ fontWeight: 600, minWidth: "1000px", maxWidth: "1000px", margin: "0 auto" }}>
                 <HighchartsReact

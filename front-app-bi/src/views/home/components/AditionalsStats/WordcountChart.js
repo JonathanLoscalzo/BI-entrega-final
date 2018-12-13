@@ -25,7 +25,7 @@ export const WordcountChart = ({ data }) => {
             <div style={{ fontWeight: 600 }}>Palabras más mencionadas</div>
             <div>
                 <p>Contabilizamos las palabras más mencionadas de todos los discursos</p>
-                <p>Fueron filtradas las "stop-words", son palabras que no tienen significado (artículos, pronombres, preposiciones...)</p>
+                <p>Fueron filtradas las "stop-words", son palabras "vacías", que no tienen significado (conectores, artículos, pronombres, preposiciones...)</p>
             </div>
             <div>
                 <div style={{ fontWeight: 600, minWidth: "1000px", maxWidth: "1000px", margin: "0 auto" }}>
