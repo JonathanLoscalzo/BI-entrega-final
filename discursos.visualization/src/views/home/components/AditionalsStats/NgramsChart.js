@@ -14,7 +14,7 @@ export const NgramsChart = ({ data }) => {
             data: data.map(x => ({ name: x.ngram, weight: x.counter })),
             name: 'WordCounts'
         }],
-        title: ""
+        title: "",
     }
     return (
         <div style={{ display: 'inline-block' }}>
@@ -25,7 +25,7 @@ export const NgramsChart = ({ data }) => {
                 <p>Hay frases que suelen repetirse, más de lo que pensamos...</p>
                 <p>Los siguientes gráficos contienen el conjunto de los ngramas más mencionados para los casos 5, 6 y 7.</p>
             </div>
-            <div style={{ fontWeight: 600, minWidth: "1000px", maxWidth: "1000px", margin: "0 auto" }}>
+            <div style={{ fontWeight: 600 }}>
                 <HighchartsReact
                     highcharts={Highcharts}
                     constructorType={'chart'}

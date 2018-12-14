@@ -29,11 +29,11 @@ class Page extends Component {
               <Grid item xs={12} >
                 <Typography variant="display3" gutterBottom>
                   N-grams
-              </Typography>
+                </Typography>
 
                 <Typography variant="headline" gutterBottom>
                   ¿Qué son los N-GRAMS?
-              </Typography>
+                </Typography>
 
                 <Typography variant="body2" gutterBottom>
                   <p>Un n-grama es una subsecuencia de n elementos de una secuencia dada. En nuestro caso, los discursos.</p>

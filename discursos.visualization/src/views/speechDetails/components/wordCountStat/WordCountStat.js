@@ -60,7 +60,7 @@ export default class WordCountStat extends Component {
                             <Bar dataKey="count" fill="#82ca9d" />
                         </BarChart> */}
 
-                        <div style={{ fontWeight: 600, minWidth: "1000px", maxWidth: "1000px", margin: "0 auto" }}>
+                        <div style={{ fontWeight: 600 }}>
                             <HighchartsReact
                                 highcharts={Highcharts}
                                 constructorType={'chart'}

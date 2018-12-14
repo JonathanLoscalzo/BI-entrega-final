@@ -25,7 +25,7 @@ class Page extends Component {
   }
 
   render() {
-    
+
     const { ngrams, wordcounts } = this.props;
 
     return (
@@ -40,7 +40,6 @@ class Page extends Component {
                   Algunas estadísticas
                 </Typography>
                 <Grid container spacing={16}>
-
                   <Grid item xs={4}>
                     <Card
                       icon={<MdMessage />}
@@ -124,14 +123,10 @@ class Page extends Component {
                     )
                   }
 
-                  <Grid item xs={12}>
-                  
-                  </Grid>
-
-                  <Grid item xs={12}>
+                  <Grid item>
                     <AditionalStats ngrams={ngrams} wordcounts={wordcounts} />
                   </Grid>
-                  
+
                 </Grid>
               </div>)
             }

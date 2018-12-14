@@ -5,6 +5,7 @@ import Header from '../../components/header';
 import WordCountStat from './components/wordCountStat'
 import GoBackButton from '../../components/gobackButton/index'
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 class SpeechDetails extends Component {
   componentWillMount() {
@@ -25,28 +26,39 @@ class SpeechDetails extends Component {
       <div className="container">
         <div className="App">
           <Header history={this.props.history} />
-          <Typography variant="display4">
-            Detalles del Discurso
-          </Typography>
+          <Grid container spacing={16}>
+            <Typography variant="display3">
+              Detalles del Discurso
+            </Typography>
 
-          {data && data.speeches.map((speech, i) =>
-            <div key={i} style={{ margin: 15 }} >
-              <Typography variant="display3">
-                Palabras más mencionadas
-              </Typography>
-              <WordCountStat speech={speech} wordcounts={this.props.wordcounts} {...speech} />
-              <Divider />
-              <Typography variant="display3">
-                Discurso Completo
-              </Typography>
-              <div style={{ margin: 20, fontSize: 'x-large' }}>
-                {speech.title}
-              </div>
-              <div style={{ margin: 20, textAlign: "justify" }}>
-                {speech.content}
-              </div>
-
-            </div>)}
+            {data && data.speeches.map((speech, i) =>
+              <div key={i} style={{ margin: 15 }} >
+                <Grid item>
+                  <Typography variant="display2">
+                    Palabras más mencionadas
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <WordCountStat speech={speech} wordcounts={this.props.wordcounts} {...speech} />
+                </Grid>
+                <Divider />
+                <Grid item>
+                  <Typography variant="display2">
+                    Discurso Completo
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <div style={{ margin: 20, fontSize: 'x-large' }}>
+                    {speech.title}
+                  </div>
+                </Grid>
+                <Grid item>
+                  <div style={{ margin: 20, textAlign: "justify" }}>
+                    {speech.content}
+                  </div>
+                </Grid>
+              </div>)}
+          </Grid>
         </div>
         {/* <GoBackButton handleGoBack={this.handleGoBack} /> */}
       </div >
