@@ -9,11 +9,13 @@ const rootReducer = combineReducers({ ...reducers, routing: routerReducer });
 const history = createHistory();
 
 function configureStore(browserHistory) {
-  const persistConfig = {
-    key: 'root',
-    storage
-  };
-  const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+  // const persistConfig = {
+  //   key: 'root',
+  //   storage
+  // };
+
+  // const persistedReducer = persistReducer(persistConfig, rootReducer);
 
   const store = createStore(
     rootReducer,
@@ -21,8 +23,10 @@ function configureStore(browserHistory) {
     window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(routerMiddleware(browserHistory), thunk)
   );
-  let persistor = persistStore(store);
-  return { store, persistor };
+
+  //let persistor = persistStore(store);
+
+  return { store/*, persistor*/ };
 }
 
 export { history };

@@ -6,6 +6,7 @@ export const dashboardService = {
   getdollar: (obj) =>
     axios({
       method: 'GET',
+      headers: { 'Access-Control-Allow-Origin': '*' },
       url: `${URL}/speeches/dollar?${mapObjectToQueryParams(obj)}`
     }).then(response => response.data)
 };
