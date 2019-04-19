@@ -35,7 +35,7 @@ class Page extends Component {
               TP Final BI
             </Typography>
 
-            <Typography variant="headline" gutterBottom>
+            {/* <Typography variant="headline" gutterBottom>
               Alumnos
             </Typography>
             <Typography variant="title" gutterBottom>
@@ -43,7 +43,7 @@ class Page extends Component {
             </Typography>
             <Typography variant="title" gutterBottom>
               De Luca Agustín
-            </Typography>
+            </Typography> */}
             <IconButton
               onClick={this.handleClick}
               color="inherit"
@@ -119,7 +119,7 @@ class Page extends Component {
                 </Typography>
               </Grid>
 
-              <Grid item xs={6} >
+              {/* <Grid item xs={6} >
                 <Typography variant="display1" gutterBottom>
                   EX: Localización en un Mapa de los discursos
                 </Typography>
@@ -130,9 +130,9 @@ class Page extends Component {
                 <Typography variant="button" gutterBottom>
 
                 </Typography>
-              </Grid>
+              </Grid> */}
 
-              <Grid item xs={6} >
+              {/* <Grid item xs={6} >
                 <Typography variant="display1" gutterBottom>
                   EX: Twitter
                 </Typography>
@@ -142,9 +142,9 @@ class Page extends Component {
                 <Typography variant="button" gutterBottom>
 
                 </Typography>
-              </Grid>
+              </Grid> */}
 
-              <Grid item xs={6} >
+              {/* <Grid item xs={6} >
                 <Typography variant="display1" gutterBottom>
                   EX: Sentimiento
                 </Typography>
@@ -155,7 +155,7 @@ class Page extends Component {
                 <Typography variant="button" gutterBottom>
 
                 </Typography>
-              </Grid>
+              </Grid> */}
             </Grid>
 
           </Loading>
