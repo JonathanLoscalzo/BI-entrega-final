@@ -65,10 +65,10 @@ export default class extends React.Component {
                 </ListItem> */}
               </List>
               <Divider />
-              <ListItem button key="GitHub" onClick={this.handleClick}>
+              {/* <ListItem button key="GitHub" onClick={this.handleClick}>
                 <ListItemIcon><GoMarkGithub /></ListItemIcon>
                 <ListItemText primary="Github Entrega"></ListItemText>
-              </ListItem>
+              </ListItem> */}
             </div>
           </div>
         </Drawer>

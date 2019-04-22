@@ -44,12 +44,12 @@ class Page extends Component {
             <Typography variant="title" gutterBottom>
               De Luca Agustín
             </Typography> */}
-            <IconButton
+            {/* <IconButton
               onClick={this.handleClick}
               color="inherit"
               aria-label="Menu">
               <GoMarkGithub />
-            </IconButton>
+            </IconButton> */}
             <Divider />
             <Grid container spacing={16}>
               <Grid item xs={12} >
