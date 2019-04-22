@@ -74,7 +74,7 @@ class Page extends Component {
                   E2: Obtención de los Precios de dólar
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                  Por medio del sitio <a href="bankersalgo.com">bankersalgo.com</a>, obtuvimos los precios del dólar y los almacenamos en una BD de MongoDB
+                  Por medio del sitio <a href="https://bankersalgo.com">bankersalgo.com</a>, obtuvimos los precios del dólar y los almacenamos en una BD de MongoDB
                 </Typography>
                 <Typography variant="button" gutterBottom>
 
