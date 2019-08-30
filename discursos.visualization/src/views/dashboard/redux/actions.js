@@ -5,7 +5,8 @@ import mainService from '../../../services/index'
 
 import {
   GET_NGRAMS_ERROR, GET_NGRAMS_RESPONSE, GET_NGRAMS_REQUEST,
-  GET_WORDCOUNTS_ERROR, GET_WORDCOUNTS_REQUEST, GET_WORDCOUNTS_RESPONSE
+  GET_WORDCOUNTS_ERROR, GET_WORDCOUNTS_REQUEST, GET_WORDCOUNTS_RESPONSE,
+  HANDLE_MAXDATE, HANDLE_MINDATE
 } from './reducer'
 
 export const getDollarList = (startDate, endDate) => {
@@ -88,3 +89,18 @@ export const getWordcounts = () => {
     }
   };
 };
+
+export const handleMinDate = (date) => (dispatch, getState) => {
+  if (date < getState().dashboard.maxDate) {
+    dispatch({type: HANDLE_MINDATE, payload: date})
+    dispatch(getDollarList(date, getState().dashboard.maxDate))
+  }
+}
+
+export const handleMaxDate = (date) => (dispatch, getState) => {
+  if (date > getState().dashboard.minDate) {
+    dispatch({type: HANDLE_MAXDATE, payload: date})
+    dispatch(getDollarList(getState().dashboard.minDate, date))
+  }
+}
+

@@ -11,30 +11,23 @@ import moment from 'moment'
 
 class Dashboard extends Component {
 
-  state = {
-    minDate: moment(new Date()).add(-4, "months"),
-    maxDate: moment(new Date()),
-  }
-
   componentWillMount() {
-    this.props.getDollarList(this.state.minDate, this.state.maxDate)
+    this.props.getDollarList(this.props.minDate, this.props.maxDate)
     // this.props.getNgrams();
     // this.props.getWordcounts()
   }
 
   handleMinDateChange(date) {
-    (date < this.state.maxDate) && this.setState({ minDate: date })
-    this.props.getDollarList(date, this.state.maxDate)
+    this.props.handleMinDate(date);
   }
 
   handleMaxDateChange(date) {
-    (date > this.state.minDate) && this.setState({ maxDate: date })
-    this.props.getDollarList(this.state.minDate, date)
+   this.props.handleMaxDate(date);
   }
 
   render() {
 
-    const { minDate, maxDate } = this.state;
+    const { minDate, maxDate } = this.props;
     return (
       <div className="container">
         {!this.props.speechs ? (
@@ -58,7 +51,7 @@ class Dashboard extends Component {
                   <DatePicker style={{ margin: 15 }}
                     value={minDate}
                     minDate={new Date('2015-12-17')}
-                    maxDate={this.state.maxDate}
+                    maxDate={maxDate}
                     name='minDate'
                     onChange={(e) => this.handleMinDateChange(e)}
                   />
@@ -66,7 +59,7 @@ class Dashboard extends Component {
                   <DatePicker style={{ margin: 15 }}
                     value={maxDate}
                     name='maxDate'
-                    minDate={this.state.minDate}
+                    minDate={minDate}
                     maxDate={new Date()}
                     onChange={(e) => this.handleMaxDateChange(e)}
                   />
