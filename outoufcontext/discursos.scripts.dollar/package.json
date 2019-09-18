@@ -1,0 +1,39 @@
+{
+  "name": "bi-script-dolar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js --exec babel-node --presets babel-preset-env",
+    "build": "babel index.js -d dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-plugin-dotenv": "^0.1.1",
+    "csv": "^5.0.0",
+    "csv-writer": "^1.2.0",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.7"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*",
+      "temp.*",
+      "data/*",
+      "*/temp.txt",
+      "temp.txt"
+    ],
+    "delay": "2500"
+  }
+}
