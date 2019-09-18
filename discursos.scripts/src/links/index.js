@@ -9,11 +9,11 @@ mongoose.connect(config.MONGO.CONNECTION_STRING, { useNewUrlParser: true });
 
 const model = require('./link.model')
 
-require('./acumulator')().then(links => {
-    //var file = fs.createWriteStream('links.txt');
-    //links.forEach(v => file.write(v + "\n"))
-    //file.end();
-
-    let entities = links.map(l => new model({ uri: l, speech: false }));
-    model.create(entities).then(() => mongoose.disconnect());
-});
+require('./acumulator')(
+    (batchLinks) => {
+        let entities = batchLinks.map(l => new model({ uri: l, speech: false }));
+        return model.insertMany(entities);
+    }).then(links => {
+        console.log("Terminó de scrapear links")
+        mongoose.disconnect()
+    });
