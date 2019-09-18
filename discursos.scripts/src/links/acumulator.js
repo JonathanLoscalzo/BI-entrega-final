@@ -4,7 +4,7 @@ var getLinks = require('./getlinks')
 
 // corresponde a las páginas del sitio de discurso
 // dia: 18/09/2019, 16 páginas
-const start = 1, end = 3;
+const start = 1, end = 16;
 
 async function all_links(batch) {
     let links = []
