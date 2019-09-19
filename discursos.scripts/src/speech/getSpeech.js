@@ -5,7 +5,10 @@ const time_div = "time"
 const content_div = "div.col-md-8.col-md-offset-2"
 
 const getDiscurso = async (page, uri) => {
-    await page.goto(uri);
+    await page.goto(uri, {
+        waitUntil: 'load',
+        timeout: 0
+    });
 
     const title = await page.evaluate((sel) => {
         let title = document.querySelector(sel).innerText;

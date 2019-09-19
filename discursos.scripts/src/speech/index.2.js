@@ -30,6 +30,9 @@ mongoose.connect(config.MONGO.CONNECTION_STRING, { useNewUrlParser: true });
                     .create(model)
                     .then((e) => {
                         logger.info(`OK id:`, model.id)
+                        //actualizamos el link que consumimos
+                        key.speech = true;
+                        linkModel.update(key).exec();
                     });
             } catch (error) {
                 logger.error({ error: error.message, uri: key.uri, id: key.id })
@@ -37,8 +40,8 @@ mongoose.connect(config.MONGO.CONNECTION_STRING, { useNewUrlParser: true });
         });
     })
 
-    links.forEach(e => e.speech = true)
-    linkModel.updateMany(links);
+    //links.forEach(e => e.speech = true)
+    //linkModel.updateMany(links);
     
     await cluster.idle();
     mongoose.disconnect();

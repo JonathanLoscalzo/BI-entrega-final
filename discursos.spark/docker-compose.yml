@@ -19,15 +19,18 @@ services:
       - 7077
       - 6066
       - 7777
+      - 8888
     ports:
       - 4040:4040
       - 6066:6066
       - 7077:7077
       - 8080:8080
       - 7777:7777
+      - 8888:8888
     volumes:
       - ./conf/master:/conf
       - ./data:/tmp/data
+      - ./notebooks:/notebooks
 
   worker:
     image: gettyimages/spark

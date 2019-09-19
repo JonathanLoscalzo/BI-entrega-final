@@ -1,0 +1,6 @@
+#pyspark
+findspark
+jupyter 
+jupyterlab
+numpy
+pandas
