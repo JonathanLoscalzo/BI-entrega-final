@@ -46,34 +46,43 @@ spark = (
     .getOrCreate()
 )
 
+# cargamos el dataframe con los discursos Row(_id,content)
 df = spark.read.format("com.mongodb.spark.sql.DefaultSource").load()
 
 # features transformers
+# me quedo con todas las palabras
 regexTokenizer = RegexTokenizer(
     inputCol="content", outputCol="raw_words", pattern="[^\\p{IsAlphabetic}0-9']+"
 )
 
+# cargamos las stopwords
 stopWords = StopWordsRemover.loadDefaultStopWords("spanish")
 
+#removemos las stopwords
 remover = StopWordsRemover(inputCol="raw_words", outputCol="words", stopWords=stopWords)
 
+# Transformer de un corpus a un conjuntos de ngrams
 ngram = NGram(n=2, inputCol="raw_words", outputCol="ngrams")
 
-# features transformation applied
+# features transformation: obtenemos todas las palabras sueltas en raw_words
 tokenized_by_word = regexTokenizer.transform(df)
 
+# a partir de la columna raw_words generamos los ngrams de 6
 tokenized_by_word = ngram.setParams(n=6).transform(
     tokenized_by_word, {ngram.outputCol: "ngrams_6"}
 )
 
+# same as
 tokenized_by_word = ngram.setParams(n=5).transform(
     tokenized_by_word, {ngram.outputCol: "ngrams_5"}
 )
 
+#same as
 tokenized_by_word = ngram.setParams(n=7).transform(
     tokenized_by_word, {ngram.outputCol: "ngrams_7"}
 )
 
+# removemos las stop words de raw_words y las guardamos en words
 tokenized_by_word = remover.transform(tokenized_by_word)
 
 # udf mappers
