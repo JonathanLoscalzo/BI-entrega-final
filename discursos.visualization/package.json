@@ -16,7 +16,7 @@
     "history": "^4.7.2",
     "lodash": "^4.17.11",
     "material-ui-pickers": "^2.0.4",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "react": "^16.4.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-date-range": "^1.0.0-beta",
